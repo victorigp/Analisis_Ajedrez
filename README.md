@@ -8,6 +8,7 @@ Luego crear las siguientes variables de entrada:
 Información:
 ------------
 Nombre de variable y Nombre externo: Información
+
 Valor predeterminado: 
 
 Este proceso realiza un análisis de la partida con comentarios por
@@ -26,6 +27,7 @@ privado en Lichess.
 Requisitos
 ------------
 Nombre de variable y Nombre externo: Requisitos
+
 Valor predeterminado: 
 
 Esta versión fue probada con el navegador Brave, la extensión
@@ -37,6 +39,7 @@ La IA utilizada es Gemini 2.5 Pro Preview 03/25
 Uso:
 ----
 Nombre de variable y Nombre externo: Uso
+
 Valor predeterminado: 
 
 Cuando termines una partida en chess.com, no le des al botón de
