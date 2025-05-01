@@ -58,6 +58,8 @@ Input Context:
 Display.ShowMessageDialog.ShowMessage Title: $'''IMPORTANTE''' Message: $'''Por favor, no uses el ratón ni el teclado hasta que finalice el proceso.
 
 Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Information Buttons: Display.Buttons.OK DefaultButton: Display.DefaultButton.Button1 IsTopMost: False
+MouseAndKeyboard.SendKeys.FocusAndSendKeysByControl Control: appmask['Pane \'Partida de  ...  - Chess.com - Brave\''] TextToSend: $'''{F5}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+WAIT 0.5
 UIAutomation.Click.Click Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Button \'Compartir\''] ClickType: UIAutomation.ClickType.LeftClick MousePositionRelativeToElement: UIAutomation.RectangleEdgePoint.MiddleCenter OffsetX: 0 OffsetY: 0
 UIAutomation.Click.Click Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Button \'PGN\''] ClickType: UIAutomation.ClickType.LeftClick MousePositionRelativeToElement: UIAutomation.RectangleEdgePoint.MiddleCenter OffsetX: 0 OffsetY: 0
 MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
