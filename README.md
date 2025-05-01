@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/1eeabc64-ed20-49d3-8fbc-678d2f7d3708)
+
 # Analisis Ajedrez
 Flujo de Power Automate Desktop realiza un análisis de la partida con comentarios por cada jugada y una estimación del ELO que cada jugador ha tenido en la partida y la importa en un estudio en Lichess.
 
