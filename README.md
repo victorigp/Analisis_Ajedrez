@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/1eeabc64-ed20-49d3-8fbc-678d2f7d3708)
+![image](https://github.com/user-attachments/assets/5fd1652b-5bf5-473a-b66b-44ff7d614a8e)
 
 # Analisis Ajedrez
 Flujo de Power Automate Desktop realiza un análisis de la partida con comentarios por cada jugada y una estimación del ELO que cada jugador ha tenido en la partida y la importa en un estudio en Lichess.
@@ -19,8 +19,8 @@ tenido en la partida y la importa en un estudio en Lichess.
 
 El proceso se inicia en una partida de Chess.com, obteniendo el 
 PGN de la partida e importándolo en Lichess. Obtemos el análisis
-de la partida que hace Lichess y los datos de las jugadas (con más
-detalle gracias al script de TamperMonkey).
+de la partida que hace Lichess y los datos de las jugadas (con 
+más detalle gracias al script de TamperMonkey).
 
 Llamamos a la IA de Gemini para que nos realice los comentarios 
 de cada jugada y finalmente importamos la partida en un estudio
@@ -33,9 +33,9 @@ Nombre de variable y Nombre externo: Requisitos
 Valor predeterminado: 
 
 Esta versión fue probada con el navegador Brave, la extensión
-de Tampermonkey v5.3.3 y el script de  Lichess - Detailed Moves
-(Games & Studies), que es una versión modificada por mi de 
-Lichess - Detailed Moves (con este también funciona). 
+de Tampermonkey v5.3.3 y el script Lichess - Detailed Moves 2, 
+que es una versión modificada por mi de Lichess - Detailed 
+Moves by Seall.DEV & Thomas Sihapnya.
 La IA utilizada es Gemini 2.5 Pro Preview 03/25
 
 Uso:
