@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/c2ebea82-b53d-46cb-89d1-7b573ee8f988)
+![image](https://github.com/user-attachments/assets/525bcb73-3f7b-4b82-a0b5-8590d0304db2)
 
 # Analisis Ajedrez
 Flujo de Power Automate Desktop que realiza un análisis de la partida de Chess.com con comentarios por cada jugada y una estimación del ELO que cada jugador ha tenido en la partida y la importa en un estudio en Lichess.
@@ -34,7 +34,7 @@ Valor predeterminado:
 
 Esta versión fue probada con el navegador Brave, la extensión
 de Tampermonkey v5.3.3 y el script Lichess - Detailed Moves 2, 
-https://github.com/victorigp/Lichess_Detailed_Moves
+https://github.com/victorigp/Lichess_Detailed_Moves_2
 que es una versión modificada por mi de Lichess - Detailed 
 Moves by Seall.DEV & Thomas Sihapnya.
 La IA utilizada es Gemini 2.5 Pro Preview 03/25
