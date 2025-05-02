@@ -31,7 +31,7 @@ Output Format (STRICT REQUIREMENTS):
 - CRITICAL RESTRICTION - NO Mentioning Specific Squares, specific pieces not mentioned in the move or Unsolicited Alternative Moves: This is the MOST IMPORTANT RULE and must be followed with extreme precision. 
 Specific Squares Forbidden: ABSOLUTELY NO MENTION of specific square coordinates (like e5, c6, f7) is allowed INSIDE the curly braces {} of the comment, unless explicitly required by the exception below.
 Specific pieces not in the move: ABSOLUTELY NO MENTION of specific pieces (like Queen, Knight, Bishop, Rook, Pawn, King - Dama, Caballo, Alfil, Torre, Peón, Rey in Spanish) is allowed INSIDE the curly braces {} of the comment, unless explicitly required by the exception below.
-Piece Names Allowed: Mentioning the type of piece being moved (Queen, Knight, Bishop, Rook, Pawn, King - Dama, Caballo, Alfil, Torre, Peón, Rey in Spanish) is allowed when the piece type is inherent in the move notation itself (e.g., Nf3 clearly involves a Knight/Caballo; e4 involves a Pawn/Peón). But not is allowed other pieces type if not in the move notation.
+Piece Names Allowed: Mentioning the type of piece being moved (Queen, Knight, Bishop, Rook, Pawn, King - Dama, Caballo, Alfil, Torre, Peón, Rey in Spanish) is allowed when the piece type is inherent in the move notation itself (e.g., Nf3 clearly involves a Knight/Caballo; e4 involves a Pawn/Peón). But not is allowed mentioning other pieces type if not in the move notation. For example, the following comment is not allowed for the move 27. Ncxe7+: \"¡Jaque! Capturas el alfil con jaque usando tu otro caballo. Una secuencia forzada hacia el mate. [+ #3]\" because you are mentioning a piece (bishop) that does not appear in the notation (Ncxe7+).
 Focus: Describe the piece\'s general function/purpose (development, control, attack, defense, preparation) and the general area of the board it influences (e.g., \"center,\" \"kingside,\" \"near the enemy king\") without naming specific target squares or pieces being attacked/defended by their coordinate name.
 EXAMPLES of what is FORBIDDEN vs ALLOWED (Comments must be in Spanish):
 FORBIDDEN (Violates specific pieces not in the move): 3. e5 {Las blancas avanzan su peón central, atacando tu alfil. [+0.15]} (Mentions \"alfil\" but the piece moved is a pawn)
@@ -49,7 +49,7 @@ If the source text does NOT provide such specific alternative notation to be inc
 5. Parenthetical Variations: If the source analysis includes variations in parentheses (), KEEP THEM EXACTLY AS THEY ARE, ensuring they remain OUTSIDE the comment braces {}. Example: 10. Rad1 {Comentario sobre Rad1. [+0.4]} (10. O-O a5 11. Ng3) 10... Qe7 {Comentario sobre Qe7. [+0.35]}.
 6. Do Not Correct Moves: The moves provided in the source PGN are the moves that were played. DO NOT correct them; analyze them as given.
 7. Special Handling for Player \"victorigp\": If one player is named victorigp:
- - Address them using the Spanish informal second-person singular (\'tú\') in the comments for THEIR moves.
+ - Address them using the Spanish informal second-person singular in the comments for THEIR moves.
  - Adopt a pedagogical, understanding, and encouraging tone in Spanish. Highlight good ideas (\"{Aquí buscaste correctamente presionar el flanco de dama.}\") and explain mistakes constructively (\"{Esta jugada te deja vulnerable a un ataque doble en c2, ¡cuidado la próxima vez!}\"). Emphasize their successes (\"{¡Excelente jugada defensiva bloqueando la columna abierta!}\", \"{¡Bien visto ese recurso táctico para simplificar la posición!}\"). Modulate the tone according to the quality of the move as per rule 4 \"Handling Evaluation Terms\", but maintain an overall supportive stance.
 
 Input Context: I will provide you with the game in PGN format. This PGN may contain preliminary annotations like [%%eval X.XX] or basic comments / evaluation symbols (!, ?, ??, etc.). You must use this base information to generate your complete analysis following ALL the rules above, producing the final commentary in Spanish.
@@ -106,26 +106,199 @@ Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Informatio
     Text.Replace Text: BlackName TextToFind: $'''\"''' IsRegEx: False IgnoreCase: False ReplaceWith: $'''%''%''' ActivateEscapeSequences: False Result=> BlackName
     UIAutomation.Click.Click Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Tab Item \'Análisis del ordenador\''] ClickType: UIAutomation.ClickType.LeftClick MousePositionRelativeToElement: UIAutomation.RectangleEdgePoint.MiddleCenter OffsetX: 0 OffsetY: 0
     MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{F5}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
-    WAIT 3
-    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({End})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 15'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Brillantes_Blancas
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 16'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Excelentes_Blancas
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 17'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Buenas_Blancas
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'2\' 7'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Libro_Blancas
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 18'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Imprecisiones_Blancas
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 19'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Errores_Blancas
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'1\' 7'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Graves_Blancas
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'54\''] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Centipeones_Blancas
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'66\''] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Precision_Blancas
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 20'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Brillantes_Negras
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 21'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Excelentes_Negras
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 22'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Buenas_Negras
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'1\' 8'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Libro_Negras
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 23'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Imprecisiones_Negras
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 24'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Errores_Negras
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 25'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Graves_Negras
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'5\' 2'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Centipeones_Negras
-    UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'99\''] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Precision_Negras
+    **REGION Brillantes
+    WAIT 1
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{F12}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 1
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''advice-summary__error symbol custom-move-stat brilliant''' DelayBetweenKeystrokes: 0 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Brillantes_Blancas
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Brillantes_Blancas TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Brillantes_Blancas
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Brillantes_Negras
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Brillantes_Negras TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Brillantes_Negras
+    **ENDREGION
+    **REGION Excelentes
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''advice-summary__error symbol custom-move-stat good''' DelayBetweenKeystrokes: 0 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Excelentes_Blancas
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Excelentes_Blancas TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Excelentes_Blancas
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Excelentes_Negras
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Excelentes_Negras TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Excelentes_Negras
+    **ENDREGION
+    **REGION Buenas
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''advice-summary__error symbol custom-move-stat interesting''' DelayBetweenKeystrokes: 0 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Buenas_Blancas
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Buenas_Blancas TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Buenas_Blancas
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Buenas_Negras
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Buenas_Negras TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Buenas_Negras
+    **ENDREGION
+    **REGION De libro
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''advice-summary__error symbol custom-move-stat book''' DelayBetweenKeystrokes: 0 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Libro_Blancas
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Libro_Blancas TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Libro_Blancas
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Libro_Negras
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Libro_Negras TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Libro_Negras
+    **ENDREGION
+    **REGION Blancas: Imprecisiones, Errores y Errores Graves
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''advice-summary__error''' DelayBetweenKeystrokes: 0 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}{Enter}{Enter}{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Imprecisiones_Blancas
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Imprecisiones_Blancas TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Imprecisiones_Blancas
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Errores_Blancas
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Errores_Blancas TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Errores_Blancas
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Graves_Blancas
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Graves_Blancas TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Graves_Blancas
+    **ENDREGION
+    **REGION Negras: Imprecisiones, Errores y Errores Graves
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''advice-summary__error''' DelayBetweenKeystrokes: 0 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Imprecisiones_Negras
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Imprecisiones_Negras TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Imprecisiones_Negras
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Errores_Negras
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Errores_Negras TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Errores_Negras
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Graves_Negras
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Graves_Negras TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Graves_Negras
+    **ENDREGION
+    **REGION Centipeones
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''advice-summary__acpl''' DelayBetweenKeystrokes: 0 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Centipeones_Blancas
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Centipeones_Blancas TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Centipeones_Blancas
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Centipeones_Negras
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Centipeones_Negras TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Centipeones_Negras
+    **ENDREGION
+    **REGION Precisión
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''advice-summary__accuracy''' DelayBetweenKeystrokes: 0 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Precision_Blancas
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Precision_Blancas TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Precision_Blancas
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    WAIT 0.5
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    Clipboard.GetText Text=> Count_Precision_Negras
+    Text.ParseText.RegexParseForFirstOccurrence Text: Count_Precision_Negras TextToFind: $'''(?<=<strong>).*?(?=</strong>)''' StartingPosition: 0 IgnoreCase: False Match=> Count_Precision_Negras
+    **ENDREGION
+    **REGION Deshabilitado, busqueda por control, varía la web y no funciona en todos los casos
+    DISABLE WAIT 3
+    DISABLE MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({End})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 15'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Brillantes_Blancas
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 16'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Excelentes_Blancas
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 17'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Buenas_Blancas
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'2\' 7'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Libro_Blancas
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 18'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Imprecisiones_Blancas
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 19'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Errores_Blancas
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'1\' 7'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Graves_Blancas
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'54\''] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Centipeones_Blancas
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'66\''] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Precision_Blancas
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 20'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Brillantes_Negras
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 21'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Excelentes_Negras
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 22'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Buenas_Negras
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'1\' 8'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Libro_Negras
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 23'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Imprecisiones_Negras
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 24'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Errores_Negras
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'0\' 25'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Graves_Negras
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'5\' 2'] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Centipeones_Negras
+    DISABLE UIAutomation.GetElementDetails Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Text \'99\''] AttributeName: $'''Own Text''' BringToFront: True AttributeValue=> Count_Precision_Negras
+    **ENDREGION
     SET Accuracy_Final TO $'''%WhiteName%:
 %Count_Brillantes_Blancas% Brillantes
 %Count_Excelentes_Blancas% Excelentes
@@ -135,7 +308,7 @@ Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Informatio
 %Count_Errores_Blancas% Errores
 %Count_Graves_Blancas% Errores graves
 %Count_Centipeones_Blancas% Pérdida promedio en centipeones
-%Count_Precision_Blancas%%% Precisión
+%Count_Precision_Blancas% Precisión
 
 %BlackName%:
 %Count_Brillantes_Negras% Brillantes
@@ -146,7 +319,7 @@ Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Informatio
 %Count_Errores_Negras% Errores
 %Count_Graves_Negras% Errores graves
 %Count_Centipeones_Negras% Pérdida promedio en centipeones
-%Count_Precision_Negras%%% Precisión'''
+%Count_Precision_Negras% Precisión'''
     WAIT 0.5
     MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({T})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
     WAIT 0.5
