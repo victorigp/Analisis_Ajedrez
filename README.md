@@ -1,7 +1,7 @@
 ![image](https://github.com/user-attachments/assets/c2ebea82-b53d-46cb-89d1-7b573ee8f988)
 
 # Analisis Ajedrez
-Flujo de Power Automate Desktop realiza un análisis de la partida con comentarios por cada jugada y una estimación del ELO que cada jugador ha tenido en la partida y la importa en un estudio en Lichess.
+Flujo de Power Automate Desktop que realiza un análisis de la partida de Chess.com con comentarios por cada jugada y una estimación del ELO que cada jugador ha tenido en la partida y la importa en un estudio en Lichess.
 
 Para utilizarlo, instalar el Power Automate Desktop en Windows, crear un nuevo flujo, llamarlo Análisis Ajedrez y copiar el contenido del archivo "Análisis Ajedrez.txt" y hacer control-V en el flujo que acabamos de crear vacío.
 
