@@ -63,6 +63,8 @@ Input Context:
 
 Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Information Buttons: Display.Buttons.OK DefaultButton: Display.DefaultButton.Button1 IsTopMost: False
     **REGION Chess.com
+    UIAutomation.Click.Click Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Button \'Compartir\''] ClickType: UIAutomation.ClickType.LeftClick MousePositionRelativeToElement: UIAutomation.RectangleEdgePoint.MiddleCenter OffsetX: 0 OffsetY: 0
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
     MouseAndKeyboard.SendKeys.FocusAndSendKeysByControl Control: appmask['Pane \'Partida de  ...  - Chess.com - Brave\''] TextToSend: $'''{F5}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
     WAIT 0.5
     UIAutomation.Click.Click Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Button \'Compartir\''] ClickType: UIAutomation.ClickType.LeftClick MousePositionRelativeToElement: UIAutomation.RectangleEdgePoint.MiddleCenter OffsetX: 0 OffsetY: 0
@@ -104,14 +106,14 @@ Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Informatio
     Text.ParseText.RegexParseForFirstOccurrence Text: Analisis_Inicial TextToFind: $'''\\[Black \"(.*?)\"\\]''' StartingPosition: 0 IgnoreCase: False Match=> MatchesBlack
     Text.ParseText.RegexParseForFirstOccurrence Text: MatchesBlack TextToFind: $'''\"(.*?)\"''' StartingPosition: 0 IgnoreCase: False Match=> BlackName
     Text.Replace Text: BlackName TextToFind: $'''\"''' IsRegEx: False IgnoreCase: False ReplaceWith: $'''%''%''' ActivateEscapeSequences: False Result=> BlackName
-    UIAutomation.Click.Click Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Tab Item \'Análisis del ordenador\''] ClickType: UIAutomation.ClickType.LeftClick MousePositionRelativeToElement: UIAutomation.RectangleEdgePoint.MiddleCenter OffsetX: 0 OffsetY: 0
-    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{F5}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    DISABLE UIAutomation.Click.Click Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Tab Item \'Análisis del ordenador\''] ClickType: UIAutomation.ClickType.LeftClick MousePositionRelativeToElement: UIAutomation.RectangleEdgePoint.MiddleCenter OffsetX: 0 OffsetY: 0
+    DISABLE MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{F5}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
     **REGION Brillantes
-    WAIT 1
+    DISABLE WAIT 1
     MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{F12}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
     WAIT 1
-    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
-    WAIT 0.5
+    DISABLE MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Escape}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    DISABLE WAIT 0.5
     MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({F})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
     MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''advice-summary__error symbol custom-move-stat brilliant''' DelayBetweenKeystrokes: 0 SendTextAsHardwareKeys: False
     WAIT 0.5
@@ -349,14 +351,15 @@ Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Informatio
     **ENDREGION
     **REGION Lichess - Estudio
     MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''https://lichess.org/study/mine/hot{Enter}''' DelayBetweenKeystrokes: 0 SendTextAsHardwareKeys: False
+    UIAutomation.ExtractDataFromWindow.ExtractData Control: appmask['Pane \'Partida de  ...  - Chess.com - Brave\''] BringToFront: True ExtractedData=> DataFromWindow
     Clipboard.GetText Text=> Analisis_IA
     Text.ParseText.ParseForFirstOccurrence Text: Analisis_IA TextToFind: $'''{''' StartingPosition: 0 IgnoreCase: False OccurrencePosition=> Position_Bracket
     Text.GetSubtext.GetSubtextFromStartTo Text: Analisis_IA NumberOfChars: Position_Bracket Subtext=> Text_Before_Bracket
     Text.GetSubtext.GetSubtextFrom Text: Analisis_IA CharacterPosition: Position_Bracket + 1 Subtext=> Text_After_Bracket
     SET Analisis_IA TO $'''%Text_Before_Bracket%
 {
-%WhiteName% Precisión: %Count_Precision_Blancas%%%
-%BlackName% Precisión: %Count_Precision_Negras%%%
+%WhiteName% Precisión: %Count_Precision_Blancas%
+%BlackName% Precisión: %Count_Precision_Negras%
 %Text_After_Bracket%
 
 '''
@@ -389,7 +392,41 @@ Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Informatio
             SET PlayerOutcome TO $'''LOSE'''
         END
     END
-    SET FinalOutput TO $'''%PlayerOutcome% %WhiteName% %WhiteELO% VS %BlackName% %BlackELO%'''
+    IF WhiteName = TargetPlayer THEN
+        SET TargetELO TO WhiteELO
+        SET TargetCountBrillantes TO Count_Brillantes_Blancas
+        SET TargetCountExcelentes TO Count_Excelentes_Blancas
+        SET TargetCountBuenas TO Count_Buenas_Blancas
+        SET TargetPrecision TO Count_Precision_Blancas
+    ELSE
+        SET TargetELO TO BlackELO
+        SET TargetCountBrillantes TO Count_Brillantes_Negras
+        SET TargetCountExcelentes TO Count_Excelentes_Negras
+        SET TargetCountBuenas TO Count_Buenas_Negras
+        SET TargetPrecision TO Count_Precision_Blancas
+    END
+    SET MoveCountsString TO $'''%''%'''
+    IF TargetCountBrillantes > 0 THEN
+        SET MoveCountsString TO $'''%TargetCountBrillantes% Brillantes'''
+    END
+    IF TargetCountExcelentes > 0 THEN
+        IF IsNotEmpty(MoveCountsString) THEN
+            SET MoveCountsString TO $'''%MoveCountsString%, %TargetCountExcelentes% Excelentes'''
+        ELSE
+            SET MoveCountsString TO $'''%TargetCountExcelentes% Excelentes'''
+        END
+    END
+    IF TargetCountBuenas > 0 THEN
+        IF IsNotEmpty(MoveCountsString) THEN
+            SET MoveCountsString TO $'''%MoveCountsString%, %TargetCountBuenas% Buenas'''
+        ELSE
+            SET MoveCountsString TO $'''%TargetCountBuenas% Buenas'''
+        END
+    END
+    SET FinalOutput TO $'''%PlayerOutcome%, %TargetPrecision%, ELO: %TargetELO%'''
+    IF IsNotEmpty(MoveCountsString) THEN
+        SET FinalOutput TO $'''%FinalOutput%, %MoveCountsString%'''
+    END
     WAIT 0.5
     MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: FinalOutput DelayBetweenKeystrokes: 0 SendTextAsHardwareKeys: False
     WAIT 0.5
@@ -419,10 +456,10 @@ Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Informatio
     Display.ShowMessageDialog.ShowMessage Title: $'''Información''' Message: $'''Proceso finalizado!''' Icon: Display.Icon.Information Buttons: Display.Buttons.OK DefaultButton: Display.DefaultButton.Button1 IsTopMost: False
     SET Proceso_No_Finalizado TO 0
     **ENDREGION
-END
-IF Proceso_No_Finalizado = 1 THEN
-    Display.ShowMessageDialog.ShowMessage Title: $'''Error''' Message: $'''Error al realizar el proceso.
+    IF Proceso_No_Finalizado = 1 THEN
+        Display.ShowMessageDialog.ShowMessage Title: $'''Error''' Message: $'''Error al realizar el proceso.
 Asegúrese de que las condiciones son correctas y repita el proceso.''' Icon: Display.Icon.ErrorIcon Buttons: Display.Buttons.OK DefaultButton: Display.DefaultButton.Button1 IsTopMost: False
+    END
 END
 
 # [ControlRepository][PowerAutomateDesktop]
