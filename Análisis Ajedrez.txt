@@ -48,7 +48,7 @@ If the source text does NOT provide such specific alternative notation to be inc
 - CRITICAL RESTRICTION - Brace Structure: There can only be ONE pair of curly braces {} per comment/move. Nesting braces (e.g., {texto {otro texto} fin}) is STRICTLY FORBIDDEN.
 5. Parenthetical Variations: If the source analysis includes variations in parentheses (), KEEP THEM EXACTLY AS THEY ARE, ensuring they remain OUTSIDE the comment braces {}. Example: 10. Rad1 {Comentario sobre Rad1. [+0.4]} (10. O-O a5 11. Ng3) 10... Qe7 {Comentario sobre Qe7. [+0.35]}.
 6. Do Not Correct Moves: The moves provided in the source PGN are the moves that were played. DO NOT correct them; analyze them as given.
-7. Special Handling for Player \"victorigp\": If one player is named victorigp:
+7. Special Handling for Player \"%TargetPlayer%\": If one player is named %TargetPlayer%:
  - Address them using the Spanish informal second-person singular in the comments for THEIR moves.
  - Adopt a pedagogical, understanding, and encouraging tone in Spanish. Highlight good ideas (\"{Aquí buscaste correctamente presionar el flanco de dama.}\") and explain mistakes constructively (\"{Esta jugada te deja vulnerable a un ataque doble en c2, ¡cuidado la próxima vez!}\"). Emphasize their successes (\"{¡Excelente jugada defensiva bloqueando la columna abierta!}\", \"{¡Bien visto ese recurso táctico para simplificar la posición!}\"). Modulate the tone according to the quality of the move as per rule 4 \"Handling Evaluation Terms\", but maintain an overall supportive stance.
 
@@ -97,7 +97,7 @@ Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Informatio
     Clipboard.GetText Text=> Analisis_Inicial
     Text.ParseText.RegexParse Text: Analisis_Inicial TextToFind: $'''(?m)^\\s*(?!\\[(WhiteElo|BlackElo)\\s\"\\d+\"\\]).*\\r?\\n?''' StartingPosition: 0 IgnoreCase: False Matches=> Analisis_Inicial_Sin_ELOs
     Text.Replace Text: Analisis_Inicial_Sin_ELOs TextToFind: $'''(\\r?\\n)([ \\t]*(\\r?\\n))+''' IsRegEx: True IgnoreCase: False ReplaceWith: $'''$1''' ActivateEscapeSequences: False Result=> Analisis_Inicial_Sin_ELOs
-    Text.ParseText.RegexParse Text: Analisis_Inicial TextToFind: $'''(\\[White \"victorigp\"\\]|\\[Black \"victorigp\"\\])''' StartingPosition: 0 IgnoreCase: False Matches=> Color_Jugador
+    Text.ParseText.RegexParse Text: Analisis_Inicial TextToFind: $'''(\\[White \"%TargetPlayer%\"\\]|\\[Black \"%TargetPlayer%\"\\])''' StartingPosition: 0 IgnoreCase: False Matches=> Color_Jugador
     Text.ParseText.RegexParseForFirstOccurrence Text: Analisis_Inicial TextToFind: $'''\\[(WhiteElo)\\s\"\\d+\"\\]''' StartingPosition: 0 IgnoreCase: False Match=> ELO_Blancas
     Text.ParseText.RegexParseForFirstOccurrence Text: Analisis_Inicial TextToFind: $'''\\[(BlackElo)\\s\"\\d+\"\\]''' StartingPosition: 0 IgnoreCase: False Match=> ELO_Negras
     Text.ParseText.RegexParseForFirstOccurrence Text: Analisis_Inicial TextToFind: $'''\\[White \"(.*?)\"\\]''' StartingPosition: 0 IgnoreCase: False Match=> MatchesWhite
@@ -440,9 +440,9 @@ Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Informatio
     MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({V})''' DelayBetweenKeystrokes: 0 SendTextAsHardwareKeys: False
     Text.Trim Text: Color_Jugador TrimOption: Text.TrimOption.Both TrimmedText=> Color_Jugador
     Text.ChangeCase Text: Color_Jugador NewCase: Text.CaseOption.LowerCase Result=> Color_Jugador
-    IF Color_Jugador = $'''[black \"victorigp\"]''' THEN
+    IF Color_Jugador = $'''[black \"%TargetPlayer%\"]''' THEN
         MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Tab}{Tab}{Tab}{End}{Tab}{Tab}{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
-    ELSE IF Color_Jugador = $'''[[black \"victorigp\"]]''' THEN
+    ELSE IF Color_Jugador = $'''[[black \"%TargetPlayer%\"]]''' THEN
         MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Tab}{Tab}{Tab}{End}{Tab}{Tab}{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
     ELSE
         MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Tab}{Tab}{Tab}{Tab}{Tab}{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
