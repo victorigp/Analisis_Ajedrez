@@ -405,7 +405,7 @@ Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Informatio
         SET TargetCountBrillantes TO Count_Brillantes_Negras
         SET TargetCountExcelentes TO Count_Excelentes_Negras
         SET TargetCountBuenas TO Count_Buenas_Negras
-        SET TargetPrecision TO Count_Precision_Blancas
+        SET TargetPrecision TO Count_Precision_Negras
     END
     SET MoveCountsString TO $'''%''%'''
     IF TargetCountBrillantes > 0 THEN
