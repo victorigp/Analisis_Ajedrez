@@ -396,12 +396,18 @@ Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Informatio
     END
     IF WhiteName = TargetPlayer THEN
         SET TargetELO TO WhiteELO
+        SET TargetCountImprecisiones TO Count_Imprecisiones_Blancas
+        SET TargetCountErrores TO Count_Errores_Blancas
+        SET TargetCountGraves TO Count_Graves_Blancas
         SET TargetCountBrillantes TO Count_Brillantes_Blancas
         SET TargetCountExcelentes TO Count_Excelentes_Blancas
         SET TargetCountBuenas TO Count_Buenas_Blancas
         SET TargetPrecision TO Count_Precision_Blancas
     ELSE
         SET TargetELO TO BlackELO
+        SET TargetCountImprecisiones TO Count_Imprecisiones_Negras
+        SET TargetCountErrores TO Count_Errores_Negras
+        SET TargetCountGraves TO Count_Graves_Negras
         SET TargetCountBrillantes TO Count_Brillantes_Negras
         SET TargetCountExcelentes TO Count_Excelentes_Negras
         SET TargetCountBuenas TO Count_Buenas_Negras
@@ -423,6 +429,15 @@ Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Informatio
             SET MoveCountsString TO $'''%MoveCountsString%, %TargetCountBuenas% Buenas'''
         ELSE
             SET MoveCountsString TO $'''%TargetCountBuenas% Buenas'''
+        END
+    END
+    IF IsEmpty(MoveCountsString) THEN
+        IF TargetCountImprecisiones = 0 THEN
+            IF TargetCountErrores = 0 THEN
+                IF TargetCountGraves = 0 THEN
+                    SET MoveCountsString TO $'''0 Imprecisiones'''
+                END
+            END
         END
     END
     SET FinalOutput TO $'''%PlayerOutcome%, %TargetPrecision%, ELO: %TargetELO%'''
