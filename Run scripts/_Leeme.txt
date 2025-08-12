@@ -1,0 +1,8 @@
+Estos scripts son para lanzar automaticamente el PDA de Análisis Ajedrez, ya que PDA requiere una cuenta de pago para lanzarlo.
+
+Funcionamiento:
+- El .bat inicia PAD. (modificar el .bat si se usan otras rutas)
+- Espera unos segundos iniciales (INITIAL_WAIT).
+- Ejecuta el script Python (wait_and_sendkeys.py).
+- El script Python busca repetidamente la imagen pad_ready_indicator.png en la pantalla.
+- Una vez que la encuentra (lo que indica que PAD probablemente ha cargado), intenta activar la ventana de PAD y envía la combinación de teclas Ctrl+Alt+Shift+B, que es la que ejecuta el flujo del Análisis Ajedrez
