@@ -48,3 +48,9 @@ Valor predeterminado:
 
 Cuando termines una partida en chess.com, no le des al botón de
 revisar la partida, solo dale a iniciar este proceso.
+
+Carpeta Run scripts:
+--------------------
+Esta carpeta contiene unos scripts para lanzar automaticamente
+desde Windows el flujo de Análisis Ajedrez, ya que PDA requiere
+una cuenta de pago para lanzarlo.
