@@ -23,7 +23,7 @@ Output Format (STRICT REQUIREMENTS):
 3. Initial Summary: Immediately after the [Tag \"Value\"] headers and BEFORE 1. (the first move), include a DETAILED game summary. This summary MUST be enclosed in a single pair of curly braces {}. It should contextualize the game (type of event if known, significance, player styles if relevant) and provide a general overview of how it unfolded.
 4. Move Comments:
  - Placement: After EACH move number and move notation (e.g., 1. e4, 1... c5), add an explanatory comment enclosed in a single pair of curly braces {}.
- - Content: Explain the idea behind the move, its immediate strategic and tactical consequences, and how it affects the position. Cover both White\'s and Black\'s moves in their respective turns.
+ - Content: Explain the idea behind the move, its immediate strategic and tactical consequences, and how it affects the position. Cover both White\'s and Black\'s moves in their respective turns. In key moves, he explains why they are key, what the player or opponent should do, and analyzes the current situation of the game.
  -Numerical Evaluation: If the source analysis provides an evaluation like [%%eval X.XX], you MUST include it at the END of the comment, INSIDE the curly braces {}, preceded by a space, using square brackets [] with the appropriate + or - sign. Example: {Comentario sobre la jugada. [+0.75]} or {Comentario sobre la jugada. [-1.20]}. DO NOT include the text %%eval in your output.
  - Language and Notation: Comments MUST be in Spanish. Move notation must be standard English algebraic notation (e.g., e4, Nf3, O-O, Bxd5).
  - Handling Evaluation Terms (e.g., Brilliant, Excellent, Good, Inaccuracy, Mistake, Blunder): If the source analysis marks a move with such terms (or their translations !!,!,!?,?!,?,??), DO NOT write these words or symbols directly in your comment. Instead, USE that information to FOCUS and TONE your commentary in Spanish. The intensity and emotional weight of your Spanish comment should reflect the quality of the move indicated by the term. Praise brilliant/excellent moves more strongly than good ones; express the severity of blunders more acutely than inaccuracies or mistakes.
@@ -72,9 +72,9 @@ Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Informatio
     UIAutomation.Click.Click Element: appmask['Window \'Ajedrez:  ...  - Chess.com - Brave\' 2']['Button \'Compartir\''] ClickType: UIAutomation.ClickType.LeftClick MousePositionRelativeToElement: UIAutomation.RectangleEdgePoint.MiddleCenter OffsetX: 0 OffsetY: 0
     DISABLE UIAutomation.Click.Click Element: appmask['Window \'Ajedrez:  ...  - Chess.com - Brave\'']['Button \'PGN\' 2'] ClickType: UIAutomation.ClickType.LeftClick MousePositionRelativeToElement: UIAutomation.RectangleEdgePoint.MiddleCenter OffsetX: 0 OffsetY: 0
     WAIT 0.5
-    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Tab}{Tab}{Tab}{Space}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
-    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
-    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Space}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({C})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
     DISABLE UIAutomation.Click.Click Element: appmask['Pane \'Partida de  ...  - Chess.com - Brave\'']['Button \'ἤ\''] ClickType: UIAutomation.ClickType.LeftClick MousePositionRelativeToElement: UIAutomation.RectangleEdgePoint.MiddleCenter OffsetX: 0 OffsetY: 0
     MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Control}({T})''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
     WAIT 0.5
@@ -364,7 +364,7 @@ Te avisaremos con otro mensaje cuando finalice.''' Icon: Display.Icon.Informatio
     WAIT 0.5
     MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
     WAIT 0.5
-    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Down}{Down}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
+    MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Down}{Down}{Down}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
     WAIT 0.5
     MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $'''{Enter}''' DelayBetweenKeystrokes: 10 SendTextAsHardwareKeys: False
     DISABLE UIAutomation.Click.Click Element: appmask['Window \'Google AI Studio - Brave\'']['Button \'Open options\''] ClickType: UIAutomation.ClickType.LeftClick MousePositionRelativeToElement: UIAutomation.RectangleEdgePoint.MiddleCenter OffsetX: 0 OffsetY: 0
