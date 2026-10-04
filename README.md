@@ -1,3 +1,11 @@
+# 🚨 Proyecto Archivado / No Mantenido 🚨
+
+Este proyecto ha quedado obsoleto y ya no recibe actualizaciones. Actualmente utilizamos una solución mejorada que puedes encontrar aquí:
+
+🔗 **[Ir al nuevo Analizador de Partidas de Ajedrez](https://github.com/victorigp/Analizador_partidas_ajedrez)**
+
+<br><br>
+
 ![image](https://github.com/user-attachments/assets/525bcb73-3f7b-4b82-a0b5-8590d0304db2)
 
 # Analisis Ajedrez
